@@ -7,6 +7,8 @@ public abstract class Entity : ScriptableObject
 
 	public float Health { get; private set; }
 
+    public float HitPoints { get; set; }
+
     public Type EntityType { get; set; } // na podstawie tej właściwości odpowiednie statystyki zostaną zapisane w zmiennych Istoty (z pliku JSON)
 
     public List<Ability> abilities;
