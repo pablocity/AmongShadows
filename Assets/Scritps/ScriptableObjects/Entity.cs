@@ -7,9 +7,9 @@ public abstract class Entity : ScriptableObject
 
 	public float Health { get; private set; }
 
-    public float HitPoints { get; set; }
+    public float HitPoints { get; set; } // Variable that store the current value of hit points calculated by means of equipped weapon and active passive abilities
 
-    public Type EntityType { get; set; } // na podstawie tej właściwości odpowiednie statystyki zostaną zapisane w zmiennych Istoty (z pliku JSON)
+    public Type EntityType { get; set; } // Based on this property the appropriate statistics will be saved in Entity's variables (from JSON file)
 
     public List<Ability> abilities;
 

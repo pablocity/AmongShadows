@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : ScriptableObject
+public abstract class Weapon : ScriptableObject
 {
-
 	public BulletType Type { get; private set; }
 
 }
 
 
+//This enum is pointing the right bullet type for chosen weapon kind
 public enum BulletType
 {
 
