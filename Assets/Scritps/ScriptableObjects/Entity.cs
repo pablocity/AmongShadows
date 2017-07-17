@@ -15,7 +15,7 @@ public abstract class Entity : ScriptableObject
 
     public abstract void Move();
 
-    public abstract void Attack();
+    public abstract void Attack(Entity enemy);
 
     public virtual bool Hit(float hitPoints)
     {

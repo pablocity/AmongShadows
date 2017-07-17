@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Item : ScriptableObject
+public interface Item
 {
 
-    public string Name { get; private set; }
-    public abstract void UseItem();
+    string Name { get; set; }
+    void UseItem();
 
     
 }
