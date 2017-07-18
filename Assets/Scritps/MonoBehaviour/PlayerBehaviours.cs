@@ -9,6 +9,8 @@ public class PlayerBehaviours : MonoBehaviour {
     [Range(0, 10)]
     public float Speed = 5f;
 
+    public LayerMask toHit;
+
     IEnumerator currentCoroutine = null;
 
     Bounds boundaries;
@@ -128,22 +130,40 @@ public class PlayerBehaviours : MonoBehaviour {
             {
                 Weapon weapon = currentItem as Weapon;
 
+                Vector3 differance = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y)
+                        - transform.position;
+
+
                 if (weapon.IsDistance)
                 {
-                    Vector3 differance = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y)
-                        - transform.position;
+                    //TODO dokończyć
+
+                    weapon.Bullet.weapon = weapon;
 
 
                 }
                 else
                 {
+                    RaycastHit2D hit = Physics2D.Raycast(GameManager.Player.transform.position, differance, weapon.Distance, toHit);
 
+                    if (hit.collider != null)
+                    {
+                        if (hit.collider.gameObject.GetComponent<Entity>() != null)
+                        {
+                            hit.collider.gameObject.GetComponent<Entity>().Hit(GameManager.playerScript.HitPoints);
+                        }
+                        //TODO zmienić Item na klasę reprezentującą obiekt gry jeśli konieczne
+                        else if (hit.collider.gameObject.GetComponent<Item>() != null)
+                        {
+                            Destroy(hit.collider.gameObject);
+                        }
+                    }
                 }
             }
             else
                 currentItem.UseItem();
         }
         else
-            Debug.LogError("You cannot attack enemy without weapon!");
+            Debug.LogError("You have neither weapon nor item!");
     }
 }

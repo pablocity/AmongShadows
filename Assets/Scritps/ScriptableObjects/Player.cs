@@ -9,25 +9,9 @@ public class Player : Entity {
     public Inventory inventory;
     public Item currentItem;
 
-    public void Attack()
-    {
-
-        if (currentItem != null)
-        {
-            currentItem.UseItem();
-        }
-        else
-        {
-            Debug.Log("You have neither weapon nor item!");
-        }
-        
-    }
-
-
-
 
     public override void Initialize()
     {
-        inventory.Add(new Weapon("Sword", 10, false));
+        inventory.Add(new Weapon("Sword", 10, false, 1.5f, true));
     }
 }

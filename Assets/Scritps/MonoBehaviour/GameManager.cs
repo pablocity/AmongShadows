@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
+    //TODO Wybieranie pocisku z JSON'a
+    public static Projectile ChooseProjectile()
+    {
+        Projectile projectile = new Projectile();
 
+        return projectile;
+    }
     
 }
