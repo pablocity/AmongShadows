@@ -21,6 +21,13 @@ public class PlayerBehaviours : MonoBehaviour {
 
 	void Update ()
     {
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Attack();
+        }
+
+
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKey(KeyCode.D))
         {
 
@@ -109,5 +116,34 @@ public class PlayerBehaviours : MonoBehaviour {
         else
             return true;
 
+    }
+
+    private void Attack()
+    {
+        Item currentItem = GameManager.playerScript.currentItem;
+
+        if (currentItem != null)
+        {
+            if (currentItem is Weapon)
+            {
+                Weapon weapon = currentItem as Weapon;
+
+                if (weapon.IsDistance)
+                {
+                    Vector3 differance = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y)
+                        - transform.position;
+
+
+                }
+                else
+                {
+
+                }
+            }
+            else
+                currentItem.UseItem();
+        }
+        else
+            Debug.LogError("You cannot attack enemy without weapon!");
     }
 }

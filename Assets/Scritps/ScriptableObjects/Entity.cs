@@ -13,10 +13,6 @@ public abstract class Entity : ScriptableObject
 
     public List<Ability> abilities;
 
-    public abstract void Move();
-
-    public abstract void Attack(Entity enemy);
-
     public virtual bool Hit(float hitPoints)
     {
         Health -= hitPoints;
@@ -30,6 +26,10 @@ public abstract class Entity : ScriptableObject
         else
             return false;
     }
+
+
+    public abstract void Initialize();
+
 }
 
 

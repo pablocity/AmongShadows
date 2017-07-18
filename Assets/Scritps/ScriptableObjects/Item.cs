@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Item
+public abstract class Item
 {
 
-    string Name { get; set; }
-    void UseItem();
+    public string Name { get; protected set; }
+    public virtual void UseItem()
+    {
+        if (this is Weapon)
+            Debug.Log("You can just attack cause it is a weapon!");
+    }
 
     
 }

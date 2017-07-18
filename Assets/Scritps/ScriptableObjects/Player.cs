@@ -6,36 +6,28 @@ using UnityEngine;
 public class Player : Entity {
 
 
-    private List<Item> inventory;
-    private Item currentItem;
+    public Inventory inventory;
+    public Item currentItem;
 
-    public override void Attack(Entity enemy)
+    public void Attack()
     {
 
         if (currentItem != null)
         {
-            if (currentItem is Weapon)
-            {
-                Weapon weapon = currentItem as Weapon;
-
-                weapon.Attack(enemy);
-            }
-            else
-            {
-                currentItem.UseItem();
-            }
+            currentItem.UseItem();
         }
         else
         {
-            if (enemy != null)
-                enemy.Hit(this.HitPoints);
+            Debug.Log("You have neither weapon nor item!");
         }
         
     }
 
-    public override void Move()
-    {
-        throw new NotImplementedException();
-    }
 
+
+
+    public override void Initialize()
+    {
+        inventory.Add(new Weapon("Sword", 10, false));
+    }
 }

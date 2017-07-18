@@ -2,11 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : ScriptableObject
+public class Weapon : Item
 {
-	public BulletType Type { get; private set; }
+	public BulletType Type { get;  set; }
 
-    public abstract void Attack(Entity enemy);
+    public float HitPoints { get; set; }
+
+    public bool IsDistance { get; set; }
+
+
+    public Weapon(string name, float hitPoints, bool isDistance)
+        : base()
+    {
+        Name = name;
+        HitPoints = hitPoints;
+        IsDistance = isDistance;
+    }
 
 }
 
