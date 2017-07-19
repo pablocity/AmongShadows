@@ -44,9 +44,9 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag != "Player" && IsRebounded == true)
+        if (collision.gameObject.tag != "Player")
         {
-            if (collision.gameObject.tag == "BoundedObstacle")
+            if (collision.gameObject.tag == "BoundedObstacle" && IsRebounded == true)
             {
                 ContactPoint2D contact = collision.contacts[0];
 

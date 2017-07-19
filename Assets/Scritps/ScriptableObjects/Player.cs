@@ -10,8 +10,10 @@ public class Player : Entity {
     public Item currentItem;
 
 
-    public override void Initialize()
+    public void Initialize()
     {
-        inventory.Add(new Weapon("Sword", 10, false, 1.5f, true));
+        inventory = ScriptableObject.CreateInstance<Inventory>();
+        inventory.Add(new Weapon("Sword", 10, false, 0.35f, true));
+        currentItem = inventory.Choose(0);
     }
 }

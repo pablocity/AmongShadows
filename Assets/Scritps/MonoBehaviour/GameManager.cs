@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour {
 	void Start ()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        playerScript = Player.GetComponent<Player>();
+        playerScript = ScriptableObject.CreateInstance<Player>();
+        playerScript.Initialize();
 	}
 	
 	// Update is called once per frame
@@ -27,6 +28,12 @@ public class GameManager : MonoBehaviour {
         Projectile projectile = new Projectile();
 
         return projectile;
+    }
+
+    public static Enemy LoadEntity(Type entityType)
+    {
+        string data;
+        return new Enemy(1, 1, new List<Ability>());
     }
     
 }

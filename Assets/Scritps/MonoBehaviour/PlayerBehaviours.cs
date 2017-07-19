@@ -10,6 +10,7 @@ public class PlayerBehaviours : MonoBehaviour {
     public float Speed = 5f;
 
     public LayerMask toHit;
+    public LayerMask enemies;
 
     IEnumerator currentCoroutine = null;
 
@@ -139,7 +140,7 @@ public class PlayerBehaviours : MonoBehaviour {
                     //TODO dokończyć
 
                     weapon.Bullet.weapon = weapon;
-
+                    Debug.Log("Your weapon is distance!");
 
                 }
                 else
@@ -148,15 +149,18 @@ public class PlayerBehaviours : MonoBehaviour {
 
                     if (hit.collider != null)
                     {
-                        if (hit.collider.gameObject.GetComponent<Entity>() != null)
+                        if (hit.collider.gameObject.layer == enemies)
                         {
                             hit.collider.gameObject.GetComponent<Entity>().Hit(GameManager.playerScript.HitPoints);
                         }
                         //TODO zmienić Item na klasę reprezentującą obiekt gry jeśli konieczne
-                        else if (hit.collider.gameObject.GetComponent<Item>() != null)
+                        else if (hit.collider.gameObject.layer == 9)
                         {
+                            //TODO dodać klasę obiektów + ich życie
                             Destroy(hit.collider.gameObject);
                         }
+
+                        Destroy(hit.collider.gameObject);
                     }
                 }
             }

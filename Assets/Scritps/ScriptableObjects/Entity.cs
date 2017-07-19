@@ -5,13 +5,13 @@ using UnityEngine;
 public abstract class Entity : ScriptableObject
 {
 
-	public float Health { get; private set; }
+	public float Health { get; protected set; }
 
     public float HitPoints { get; set; } // Variable that store the current value of hit points calculated by means of equipped weapon and active passive abilities
 
     public Type EntityType { get; set; } // Based on this property the appropriate statistics will be saved in Entity's variables (from JSON file)
 
-    public List<Ability> abilities;
+    public List<Ability> Abilities;
 
     public virtual bool Hit(float hitPoints)
     {
@@ -26,9 +26,6 @@ public abstract class Entity : ScriptableObject
         else
             return false;
     }
-
-
-    public abstract void Initialize();
 
 }
 

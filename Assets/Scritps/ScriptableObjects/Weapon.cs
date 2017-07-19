@@ -35,4 +35,5 @@ public class Weapon : Item
 public enum BulletType
 {
     None,
+    Normal
 }
